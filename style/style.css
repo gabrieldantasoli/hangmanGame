@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgba(43, 43, 43, 0.521);
+}
+header,footer{
+    background-color: rgba(26, 25, 25, 0.74);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+}
+header > *{
+    font-size: 3rem;
+    color: white;
+    font-family: Oswald;
+    text-align: center;
+}
+header i:hover{
+    color: rgb(117, 114, 114);
+}
+footer{
+    position: fixed;
+    bottom: 0;left: 0;right: 0;
+    text-align: center;
+}
+footer *{
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+footer a:hover{
+    color: rgb(117, 114, 114);
+}
+#game{
+    text-align: center;
+}
+
+
+@media (max-width:420px){
+    header a{
+        display: none;
+    }
+}
