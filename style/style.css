@@ -8,7 +8,7 @@
 body{
     background-color: rgba(43, 43, 43, 0.521);
 }
-header,footer{
+header{
     background-color: rgba(26, 25, 25, 0.74);
     display: flex;
     align-items: center;
@@ -22,19 +22,6 @@ header > *{
     text-align: center;
 }
 header i:hover{
-    color: rgb(117, 114, 114);
-}
-footer{
-    position: fixed;
-    bottom: 0;left: 0;right: 0;
-    text-align: center;
-}
-footer *{
-    color: white;
-    text-decoration: none;
-    font-size: 1.5rem;
-}
-footer a:hover{
     color: rgb(117, 114, 114);
 }
 #words{
@@ -114,6 +101,15 @@ footer a:hover{
     font-family: oswald;
     border-radius: 1rem;
     border: 1px solid black;
+}
+#msg{
+    width: 80%;
+    padding: 1rem;
+    max-width: 300px;
+    display: none;
+    border-radius: .5rem;
+    margin: auto;
+    margin-top: 1rem;
 }
 
 

@@ -1,15 +1,15 @@
 var classes = ['comidas','frutas','objetos','meios de transportes','legumes','brinquedos','linguagens de programação','planetas','animais','biomas','instrumentos']
 var elements = [
-    {'class':'comidas','element': ['Coxinha','lasanha','acarajé','feijoada','panqueca','canjica','churrasco','parmegiana','estrogonofe','hamburger','cachorro quente','macarronada'],'color':'#EB2F22'},
-    {'class':'frutas','element': ['jaboticaba','graviola','araticum','alfarroba','bergamota','framboesa','guabiroba','ibacurupari','macaúba','pitangatuba','seriguela','tamarindo'],'color':'#27EB24'},
+    {'class':'comidas','element': ['Coxinha','lasanha','acaraje','feijoada','panqueca','canjica','churrasco','parmegiana','estrogonofe','hamburger','cachorro quente','macarronada'],'color':'#EB2F22'},
+    {'class':'frutas','element': ['jaboticaba','graviola','araticum','alfarroba','bergamota','framboesa','guabiroba','ibacurupari','macauba','pitangatuba','seriguela','tamarindo'],'color':'#27EB24'},
     {'class':'objetos','element': ['candelabro','fotografia','carregador','banheira','computador','escrivaninha','dinheiro','penteadeire','grampeador','fechadura','ventilador','umidificador'],'color':'#D47C17'},
-    {'class':'meios de transportes','element': ['trem-bala','submarino','motocicleta','caminhão','bicicleta','patinete','charrete','veleiro','onibus','transatlântico','navio cargueiro','dirigível'],'color':'#D6D69D'},
-    {'class':'legumes \\ verduras','element': ['cenoura','beterraba','cebola','beringela','Brócolis','Ervilha','Gengibre','inhame','jamelão','lentilha','mandioquina','pimentão'],'color':'#B0E39A'},
-    {'class':'brinquedos \\ jogos','element': ['boneca','pista de corrida','carro de controle remoto','banbolê','massa de modelar','peças de construir','vai e volta','aviãozinho','quebra-cabeça','banco imobíliario','pega varetas','amarelinha'],'color':'#F0E02C'},
-    {'class':'planetas \\ galaxias','element': ['marte','venus','terra','mercurio','saturno','urano','netuno','andromeda','centauros a','esquimó','nebulosa','via lactea'],'color':'#ED8DA1'},
-    {'class':'animais','element': ['bufalo','cachorro','tartaruga marinha','tigre dente de sabres','hipopótamo','chipanzé','golfinho','dragão de komodo','crocodilo','camaleão','leão africano','cavalo marinho'],'color':'#D64620'},
+    {'class':'meios de transportes','element': ['trem-bala','submarino','motocicleta','caminhao','bicicleta','patinete','charrete','veleiro','onibus','transatlantico','navio cargueiro','dirigivel'],'color':'#D6D69D'},
+    {'class':'legumes \\ verduras','element': ['cenoura','beterraba','cebola','beringela','Ervilha','Gengibre','inhame','lentilha','mandioquina','pimenta'],'color':'#B0E39A'},
+    {'class':'brinquedos \\ jogos','element': ['boneca','pista de corrida','carro de controle remoto','massa de modelar','pique-esconde','vai e volta','pula-corda','quebra-cabeça','pega-peg','pega varetas','amarelinha'],'color':'#F0E02C'},
+    {'class':'planetas \\ galaxias','element': ['marte','venus','terra','mercurio','saturno','urano','netuno','andromeda','centauros a','esquimo','nebulosa','via lactea'],'color':'#ED8DA1'},
+    {'class':'animais','element': ['bufalo','cachorro','tartaruga marinha','tigre dente de sabres','urso polar','gorila','golfinho','baleia jubarte','crocodilo','camaleão','leão africano','cavalo marinho'],'color':'#D64620'},
     {'class':'biomas','element': ['tundra artica','taiga','floresta tropical','floresta temperada','savana','deserto','campos','chaparral','tundra alpina','selva','caatinga','cerrado'],'color':'#37F069'},
-    {'class':'instrumentos','element': ['saxofone','violino','flauta','clarinete','bateria','tambor','clarone','violão','guitarra','contra baixo','bongô','violoncelo'],'color':'#daa520'}
+    {'class':'instrumentos','element': ['saxofone','violino','flauta','clarinete','bateria','tambor','clarone','viola','guitarra','contra baixo','berimbal','violoncelo'],'color':'#daa520'}
 ]
 
 var allClasses = elements.length-1;
@@ -52,6 +52,7 @@ function playGame() {
             play.value = '';
             right = false;
             search = word.match(letter.toLowerCase());
+            word = word.toLowerCase();
             while (search != null) {
                 lettertm = word.search(letter.toLowerCase()) + 1;
                 obj = document.getElementById('word'+lettertm).innerHTML = letter.toUpperCase();
@@ -60,11 +61,23 @@ function playGame() {
                 search = word.match(letter);
                 right = true
             }
-            if (right) {
+            document.getElementById('chosenLetters').innerHTML += `<span>${letter.toUpperCase()}  </span>`;
+            if (!right) {
+                mistakes += 1;
+                if (mistakes < 7) {
 
+                }else{
+                    playing = false;document.getElementById('msg').innerHTML = 'Infelizmente você perdeu ):!';
+                    document.getElementById('msg').style.background = 'rgba(255,0,0,0.5)'
+                }
             }
             if (hits == wordWidth) {
                 playing = false;
+                document.getElementById('msg').innerHTML = 'Parabéns , você ganhou !';
+                document.getElementById('msg').style.background = 'rgba(0,255,0,0.5)'
+            }
+            if (!playing){
+                document.getElementById('msg').style.display = 'block';
                 document.getElementById('chosenLetters').style.display = 'none';
                 document.getElementById('playeractions').style.display = 'none';
             }
@@ -73,6 +86,7 @@ function playGame() {
 }
 
 function startGame() {
+    document.getElementById('msg').style.display = 'none';
     document.getElementById('chosenLetters').style.display = 'block';
     document.getElementById('playeractions').style.display = 'block';
     document.getElementById('game').style.display = 'block';
@@ -81,6 +95,7 @@ function startGame() {
     play = document.getElementById('letter');
     play.value='';
     play.focus();
+    mistakes = 0;
     hits = 0;
     right = false;
     document.getElementById('chosenLetters').innerHTML = 'Letras Digitadas : ';
@@ -88,7 +103,6 @@ function startGame() {
     position = Math.round(Math.random()*(elements.length-1));
     usedClass = elements[position].class
     word = elements[position].element[Math.round(Math.random()*(elements[position].element.length-1))];
-    console.log(word)
     wordWidth = word.length;
     whatletters(wordWidth);
     document.getElementById('step').innerHTML = usedClass;
