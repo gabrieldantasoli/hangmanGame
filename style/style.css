@@ -96,10 +96,24 @@ footer a:hover{
     text-align: center;
     font-size: 2.4rem;
 }
-#chosenLetters{
+#chosenLetters,#chosenLetters span{
     margin-top: 1rem;
     font-size: 1rem;
     font-weight: 700;
+}
+#chosenLetters span{
+    color: red;
+}
+#step{
+    width: 80vw;
+    max-width: 300px;
+    margin: auto;
+    margin-top: 1rem;
+    font-size: 2rem;
+    padding: .5rem 1rem;
+    font-family: oswald;
+    border-radius: 1rem;
+    border: 1px solid black;
 }
 
 
