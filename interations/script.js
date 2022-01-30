@@ -71,7 +71,7 @@ function playGame() {
                 obj = document.getElementById('word'+lettertm).innerHTML = letter.toUpperCase();
                 word = word.replace(letter,'0');
                 hits += 1;
-                search = word.match(letter);
+                search = word.match(letter.toLowerCase());
                 right = true;
             }
             document.getElementById('chosenLetters').innerHTML += `<span>${letter.toUpperCase()}  </span>`;
