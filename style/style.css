@@ -37,8 +37,69 @@ footer *{
 footer a:hover{
     color: rgb(117, 114, 114);
 }
+#words{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    gap: .2rem;
+}
+.word{
+    width: 2rem;
+    height: 3rem;
+    background: rgb(172, 172, 172);
+    border: 1px solid black;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Oswald;
+    font-size: 2rem;
+    font-weight: 700;
+}
 #game{
+    display: none;
     text-align: center;
+}
+#start{
+    padding: .7rem;
+    margin-left: 50vw;
+    margin-top: 1rem;
+    transform: translate(-50%);
+    font-family: oswald;
+    font-size: 1.7rem;
+    font-weight: 700;
+    min-width: 250px;
+    max-width: 300px;
+}
+#playeractions{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#choice{
+    font-weight: 300;
+    background-color: #e9e9ed;
+    border: none;
+    font-size: 2rem;
+    padding: .5rem;
+    border-radius: .3rem;    
+}
+#letter{
+    width: 2rem;
+    height: 3.3rem;
+    margin-right: 1rem;
+    border: 1px solid black;
+    border-radius: .5rem;
+    text-align: center;
+    font-size: 2.4rem;
+}
+#chosenLetters{
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 
