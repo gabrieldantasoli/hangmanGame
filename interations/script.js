@@ -37,18 +37,6 @@ function whatletters(width) {
     for (var i = 1;i<=width;i++){
         document.querySelector(`#word${i}`).style.display = 'flex';
     }
-    for(var c = 0;c<word.length;c++){
-        if (word[c] === ' ') {
-            document.querySelector(`#word${c+1}`).style.background = 'black';
-            hits += 1;
-        }
-    }
-    for(var c = 0;c<word.length;c++){
-        if (word[c] === '-') {
-            document.querySelector(`#word${c+1}`).style.innerHTML = '-';
-            hits += 1;
-        }
-    }
 };
 
 function playGame() {
