@@ -52,15 +52,15 @@ function playGame() {
             letter = play.value;
             play.value = '';
             right = false;
+            word = word.toLowerCase()
             search = word.match(letter.toLowerCase());
-            word = word.toLowerCase();
             while (search != null) {
                 lettertm = word.search(letter.toLowerCase()) + 1;
                 obj = document.getElementById('word'+lettertm).innerHTML = letter.toUpperCase();
                 word = word.replace(letter,'0');
                 hits += 1;
-                search = word.match(letter);
-                right = true
+                search = word.match(letter.toLowerCase());
+                right = true;
             }
             document.getElementById('chosenLetters').innerHTML += `<span>${letter.toUpperCase()}  </span>`;
             if (!right) {
