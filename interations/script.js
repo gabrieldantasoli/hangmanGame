@@ -56,7 +56,7 @@ function playGame() {
         whatletter = play.value.toLowerCase() ;
         if (usedLetters.indexOf(whatletter) == -1) {
             usedLetters.push(whatletter) ;
-            document.getElementById('chosenLetters').innerHTML += `<span>${whatletter}</span> , ` ;
+            document.getElementById('chosenLetters').innerHTML += `<span>${whatletter.toUpperCase()}</span> , ` ;
             if (word.search(whatletter) == -1) {
                 mistakes += 1 ;
             };
@@ -67,14 +67,20 @@ function playGame() {
                 };
             };
             let msg = document.getElementById('msg');
-            if (mistakes < 7) {
+            if (mistakes < maxMistakes) {
                 playing = true ;
             }else {
                 playing = false ;
                 msg.innerHTML = `Infelizmente você perder . A palavra era ${word} !` ;
+                document.getElementById('msg').style.display = 'block' ;
+                document.getElementById('msg').style.background = 'red';
+                document.getElementById('playeractions').style.display = 'none' ;
             }
             if (hits == word.length) {
-                document.getElementById('msg').innerHTML = `Parabéns , você ganhou o jogo . A palavra era ${word} !`;
+                document.getElementById('msg').innerHTML = `Parabéns , você ganhou o jogo . A palavra era \"${word.toUpperCase()}\"`
+                document.getElementById('msg').style.display = 'block' ;
+                document.getElementById('msg').style.background = 'green';
+                document.getElementById('playeractions').style.display = 'none' ;
             };
         }else {
             window.alert(`A letra \'${whatletter.toUpperCase()}\' já foi digitada . Escolha outra letra !`)
@@ -91,6 +97,8 @@ function startGame() {
     play = document.getElementById('letter');
     play.value = '' ;
     play.focus() ;
+    document.getElementById('msg').style.display = 'none' ;
+    document.getElementById('playeractions').style.display = 'block' ;
     hits = 0 ;
     mistakes = 0 ;
     hight = false ;
