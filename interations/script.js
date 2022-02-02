@@ -62,7 +62,7 @@ function playGame() {
             };
             for (i in word) {
                 if (word[i] == whatletter) {
-                    obj[i].innerHTML = whatletter ;
+                    obj[i].innerHTML = whatletter.toUpperCase() ;
                     hits += 1 ;
                 };
             };
