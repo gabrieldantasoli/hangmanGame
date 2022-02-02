@@ -15,7 +15,7 @@ var elements = [
 var allClasses = elements.length - 1;
 var hight = false ;
 var playing = false ;
-var usedLettters = [] ;
+var usedLetters ;
 var maxMistakes = 7 ;
 var position ;
 var word ;
@@ -24,6 +24,7 @@ var hits ;
 var mistakes ;
 var usedLetters ;
 var play ;
+var whatletter ;
 var clas ;
 var wordPosition ;
 var obj ;
@@ -49,11 +50,43 @@ function wordLetters(word) {
 };
 
 function playGame() {
-
+    if (play.value == '') {
+        window.alert('Digite uma letra !')
+    }else {
+        whatletter = play.value.toLowerCase() ;
+        if (usedLetters.indexOf(whatletter) == -1) {
+            usedLetters.push(whatletter) ;
+            document.getElementById('chosenLetters').innerHTML += `<span>${whatletter}</span> , ` ;
+            if (word.search(whatletter) == -1) {
+                mistakes += 1 ;
+            };
+            for (i in word) {
+                if (word[i] == whatletter) {
+                    obj[i].innerHTML = whatletter ;
+                    hits += 1 ;
+                };
+            };
+            let msg = document.getElementById('msg');
+            if (mistakes < 7) {
+                playing = true ;
+            }else {
+                playing = false ;
+                msg.innerHTML = `Infelizmente você perder . A palavra era ${word} !` ;
+            }
+            if (hits == word.length) {
+                document.getElementById('msg').innerHTML = `Parabéns , você ganhou o jogo . A palavra era ${word} !`;
+            };
+        }else {
+            window.alert(`A letra \'${whatletter.toUpperCase()}\' já foi digitada . Escolha outra letra !`)
+        };
+        play.value = '' ;
+        play.focus() ;
+    };
 };
 
 function startGame() {
     playing = true ;
+    usedLetters = [] ;
     document.getElementById('game').style.display = 'block';
     play = document.getElementById('letter');
     play.value = '' ;
@@ -65,7 +98,7 @@ function startGame() {
     position = Math.round(Math.random()*allClasses);
     clas = elements[position].class ;
     wordPosition = Math.round(Math.random()*(elements[position].element.length - 1)) ;
-    word = elements[position].element[wordPosition] ;
+    word = elements[position].element[wordPosition].toLowerCase() ;
     let step = document.getElementById('step') ;
     step.innerHTML = clas ;
     step.style.background = elements[position].color ;
