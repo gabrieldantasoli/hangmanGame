@@ -63,6 +63,7 @@ function playGame() {
             for (i in word) {
                 if (word[i] == whatletter) {
                     obj[i].innerHTML = whatletter.toUpperCase() ;
+                    obj[i].style.color = 'black' ; 
                     hits += 1 ;
                 };
             };
@@ -71,16 +72,24 @@ function playGame() {
                 playing = true ;
             }else {
                 playing = false ;
-                msg.innerHTML = `Infelizmente você perder . A palavra era ${word} !` ;
+                msg.innerHTML = `Infelizmente você perdeu . A palavra era ${word} !` ;
                 document.getElementById('msg').style.display = 'block' ;
                 document.getElementById('msg').style.background = 'red';
                 document.getElementById('playeractions').style.display = 'none' ;
+                document.getElementById('start').style.display = 'block' ;
+                for (i in word) {
+                    if (obj[i].innerHTML == '') {
+                        obj[i].innerHTML = word[i].toUpperCase() ;
+                        obj[i].style.color = 'red' ;
+                    }
+                }
             }
             if (hits == word.length) {
                 document.getElementById('msg').innerHTML = `Parabéns , você ganhou o jogo . A palavra era \"${word.toUpperCase()}\"`
                 document.getElementById('msg').style.display = 'block' ;
                 document.getElementById('msg').style.background = 'green';
                 document.getElementById('playeractions').style.display = 'none' ;
+                document.getElementById('start').style.display = 'block' ;
             };
         }else {
             window.alert(`A letra \'${whatletter.toUpperCase()}\' já foi digitada . Escolha outra letra !`)
@@ -94,6 +103,8 @@ function startGame() {
     playing = true ;
     usedLetters = [] ;
     document.getElementById('game').style.display = 'block';
+    document.getElementById('start').style.display = 'none' ;
+    document.getElementById('pass').style.display = 'block' ;
     play = document.getElementById('letter');
     play.value = '' ;
     play.focus() ;
