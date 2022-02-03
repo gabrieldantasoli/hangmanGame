@@ -5,9 +5,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+html{
+    overflow-X:hidden;
+}
 body{
-    width: 100vw;
-    overflow-x: hidden;
+    overflow-X: hidden;
     background-color: rgba(43, 43, 43, 0.521);
 }
 header{
