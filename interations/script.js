@@ -1,11 +1,11 @@
 var classes = ['comidas','frutas','objetos','meios de transportes','legumes','brinquedos','linguagens de programação','planetas','animais','biomas','instrumentos'];
 var elements = [
-    {'class':'comidas','element': ['Coxinha','lasanha','acaraje','feijoada','panqueca','canjica','churrasco','parmegiana','estrogonofe','hamburger','cachorro quente','macarronada'],'color':'#EB2F22'},
+    {'class':'comidas','element': ['Coxinha','lasanha','acaraje','feijoada','panqueca','canjica','churrasco','parmegiana','estrogonofe','hamburger','cachorro quente','macarronada','Arroz de Carreteiro','Caldeirada','Barreado','Virado a Paulista','Camarao com Chuchu','Tutu a Mineira','Moqueca Capixaba','Mojica de Pintado','Arroz Boliviano','Caldo de Piranha','Pato no Tucupi','Tacaca','Peixada','Caldeirada de peixe','Pirarucu a Casaca','Panelada','Buchada de Bode','Arrumadinho','Galinha a Cabidela'],'color':'#EB2F22'},
     {'class':'frutas','element': ['jaboticaba','graviola','araticum','alfarroba','bergamota','framboesa','guabiroba','ibacurupari','macauba','pitangatuba','seriguela','tamarindo'],'color':'#27EB24'},
     {'class':'objetos','element': ['candelabro','fotografia','carregador','banheira','computador','escrivaninha','dinheiro','penteadeire','grampeador','fechadura','ventilador','umidificador'],'color':'#D47C17'},
     {'class':'meios de transportes','element': ['trem-bala','submarino','motocicleta','caminhao','bicicleta','patinete','charrete','veleiro','onibus','transatlantico','navio cargueiro','dirigivel'],'color':'#D6D69D'},
     {'class':'legumes \\ verduras','element': ['cenoura','beterraba','cebola','beringela','Ervilha','Gengibre','inhame','lentilha','mandioquina','pimenta'],'color':'#B0E39A'},
-    {'class':'brinquedos \\ jogos','element': ['boneca','pista de corrida','carro de controle remoto','massa de modelar','pique-esconde','vai e volta','pula-corda','quebra-cabeça','pega-pega','pega varetas','amarelinha'],'color':'#F0E02C'},
+    {'class':'brinquedos \\ jogos','element': ['boneca','pista de corrida','carro de controle remoto','massa de modelar','pique-esconde','vai e volta','pula-corda','quebra-cabeça','pega-pega','pega varetas','amarelinha','Bolinha de Gude','Peteca'],'color':'#F0E02C'},
     {'class':'planetas \\ galaxias','element': ['marte','venus','terra','mercurio','saturno','urano','netuno','andromeda','centauros a','esquimo','nebulosa','via lactea'],'color':'#ED8DA1'},
     {'class':'animais','element': ['bufalo','cachorro','tartaruga marinha','tigre dente de sabres','urso polar','gorila','golfinho','baleia jubarte','crocodilo','camaleao','leao africano','cavalo marinho'],'color':'#D64620'},
     {'class':'biomas','element': ['tundra artica','taiga','floresta tropical','floresta temperada','savana','deserto','campos','chaparral','tundra alpina','selva','caatinga','cerrado'],'color':'#37F069'},
@@ -106,6 +106,7 @@ function playGame() {
 function startGame() {
     playing = true ;
     animate = false ;
+    whatbody = 0 ;
     body.forEach(item => item.style.display = 'none') ;
     document.querySelectorAll('.eye').forEach(item => item.style.display = 'none');
     usedLetters = [] ;

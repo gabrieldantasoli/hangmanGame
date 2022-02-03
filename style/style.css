@@ -6,6 +6,8 @@
     box-sizing: border-box;
 }
 body{
+    width: 100vw;
+    overflow-x: hidden;
     background-color: rgba(43, 43, 43, 0.521);
 }
 header{
@@ -15,13 +17,14 @@ header{
     justify-content: space-around;
     padding: 1rem;
 }
-header > *{
+header *{
     font-size: 3rem;
     color: white;
     font-family: Oswald;
     text-align: center;
+    text-decoration: none;
 }
-header i:hover{
+header i:hover,header h1 a:hover{
     color: rgb(117, 114, 114);
 }
 #words{
@@ -39,7 +42,7 @@ header i:hover{
     padding: .5rem;
     border-radius: 50%;
     position: absolute;
-    top: 7rem;right: 1rem;
+    top: 7rem;right: .5rem;
     display: none;
 }
 .word{
@@ -102,7 +105,7 @@ header i:hover{
     color: red;
 }
 #step{
-    width: 80vw;
+    width: 60vw;
     max-width: 300px;
     margin: auto;
     margin-top: 1rem;
@@ -214,7 +217,12 @@ header i:hover{
 
 
 @media (max-width:420px){
-    header a{
+    header > a{
         display: none;
+    }
+}
+@media (max-width:336px) {
+    #pass{
+        top: 12rem;
     }
 }
