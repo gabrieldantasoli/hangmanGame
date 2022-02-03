@@ -15,8 +15,10 @@ var elements = [
 var allClasses = elements.length - 1;
 var hight = false ;
 var playing = false ;
+var animate = true ;
+var whatbody = 0 ;
 var usedLetters ;
-var maxMistakes = 7 ;
+var maxMistakes = 6 ;
 var position ;
 var word ;
 var wordWidth ;
@@ -28,6 +30,7 @@ var whatletter ;
 var clas ;
 var wordPosition ;
 var obj ;
+var body = document.querySelectorAll('.person > div') ;
 
 function wordLetters(word) {
     obj = document.querySelectorAll('.word') ;
@@ -59,6 +62,7 @@ function playGame() {
             document.getElementById('chosenLetters').innerHTML += `<span>${whatletter.toUpperCase()}</span> , ` ;
             if (word.search(whatletter) == -1) {
                 mistakes += 1 ;
+                startAnimation(mistakes-1) ;
             };
             for (i in word) {
                 if (word[i] == whatletter) {
@@ -101,6 +105,9 @@ function playGame() {
 
 function startGame() {
     playing = true ;
+    animate = false ;
+    body.forEach(item => item.style.display = 'none') ;
+    document.querySelectorAll('.eye').forEach(item => item.style.display = 'none');
     usedLetters = [] ;
     document.getElementById('game').style.display = 'block';
     document.getElementById('start').style.display = 'none' ;
@@ -123,6 +130,32 @@ function startGame() {
     step.style.background = elements[position].color ;
     wordLetters(word);
 };
+
+function startAnimation(x) {
+    if (animate) {
+        setTimeout(startAnimation,1000);
+    } ;
+    if (whatbody < 6) {
+        if (animate) {
+            body[whatbody].style.display = 'block' ;
+        }else{
+            body[x].style.display = 'block' ;
+        }
+    }
+    if (whatbody == 5 || x == 5) {
+        document.querySelectorAll('.eye').forEach(item => item.style.display = 'block');
+    };
+    if (whatbody == 6) {
+        whatbody = -1 ;
+        body.forEach(item => item.style.display = 'none') ;
+        document.querySelectorAll('.eye').forEach(item => item.style.display = 'none');
+    };
+    if (animate) {
+        whatbody += 1;
+    };
+};
+
+setTimeout(startAnimation,1000);
 
 document.getElementById('start').addEventListener('click',startGame);
 document.getElementById('choice').addEventListener('click',playGame);
